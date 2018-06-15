@@ -20,6 +20,9 @@ let webApp =
                 GET >=> choose [
                     route "/hello" >=> handleGetHello
                 ]
+                POST >=> choose [
+                    routef "/sayHello/%s" sayHello
+                ]
             ])
         setStatusCode 404 >=> text "Not Found" ]
 
@@ -49,9 +52,12 @@ let configureApp (app : IApplicationBuilder) =
         .UseCors(configureCors)
         .UseGiraffe(webApp)
 
+open MyBus
+
 let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore
     services.AddGiraffe() |> ignore
+    configureRebusServices services |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
     let filter (l : LogLevel) = l.Equals LogLevel.Error

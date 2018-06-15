@@ -14,3 +14,14 @@ module HttpHandlers =
                 }
                 return! json response next ctx
             }
+
+    open Rebus.Bus
+    open MyBus.Commands
+
+    let sayHello (name: string): HttpHandler =
+        fun next ctx ->
+            task {
+                let bus = ctx.GetService<IBus>()
+                bus.Send({Name = name}).Wait() |> ignore
+                return! Successful.OK "Your message has been published." next ctx
+            }
