@@ -1,4 +1,11 @@
-# giraffe_rebus_api
+# Rebus FSharp
+
+This is an example showing how to configure and use [Rebus service bus](https://github.com/rebus-org/Rebus.ServiceProvider) bus in .NET Core using F# and [Giraffe](https://github.com/giraffe-fsharp/Giraffe#getting-started).  This is the code for the following blog article:
+
+http://kearon.blogspot.com/2018/06/using-rebus-service-bus-from-f-with.html
+
+
+# Giraffe's Readme
 
 A [Giraffe](https://github.com/giraffe-fsharp/Giraffe) web application, which has been created via the `dotnet new giraffe` command.
 
